@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -52,13 +53,22 @@ namespace DataCollectionForRealtime
             return true;
         }
 
-        public bool GetTblInstruments(ref ConcurrentDictionary<long, tblinstrument> instrumentHashTable,
-            ref List<tblinstrument> instrumentList)
+        public bool GetTblInstruments(ref ConcurrentDictionary<long, Instrument> instrumentHashTable,
+            ref List<Instrument> instrumentList)
         {
 
             try
             {
-                instrumentList = Context.tblinstruments.ToList();
+                List<tblinstrument> tblinstrumentList = Context.tblinstruments.ToList();
+
+                Mapper.Initialize(cfg => cfg.CreateMap<tblinstrument, Instrument>());
+
+                for (int i = 0; i < tblinstrumentList.Count(); i++)
+                {
+                    Instrument instrument = Mapper.Map<Instrument>(tblinstrumentList[i]);
+
+                    instrumentList.Add(instrument);
+                }                
 
                 for (int i = 0; i < instrumentList.Count(); i++)
                 {

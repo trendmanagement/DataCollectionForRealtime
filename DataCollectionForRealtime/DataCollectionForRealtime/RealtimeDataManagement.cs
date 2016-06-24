@@ -50,12 +50,16 @@ namespace DataCollectionForRealtime
         {
             MongoDBConnectionAndSetup mongoDBConnectionAndSetup = new MongoDBConnectionAndSetup();
 
-            MongoDB_OptionSpreadExpression osefdb = new MongoDB_OptionSpreadExpression();
+            OptionSpreadExpression osefdb = new OptionSpreadExpression();
 
+            
             osefdb.cqgSymbol = "F.EPU16";
             osefdb.instrument = cqgDataManagement.instrumentHashTable[11];
 
-            mongoDBConnectionAndSetup.MongoDataCollection.InsertOne(osefdb);
+            mongoDBConnectionAndSetup.MongoDataCollection.ReplaceOne(
+                item => item.cqgSymbol == osefdb.cqgSymbol,
+                osefdb,
+                new UpdateOptions { IsUpsert = true });
 
 
         }
@@ -64,7 +68,7 @@ namespace DataCollectionForRealtime
         {
             MongoDBConnectionAndSetup mongoDBConnectionAndSetup = new MongoDBConnectionAndSetup();
 
-            var filterBuilder = Builders<MongoDB_OptionSpreadExpression>.Filter;
+            var filterBuilder = Builders<OptionSpreadExpression>.Filter;
             var filter = filterBuilder.Ne("Id", "barf");
 
             var testExpression = mongoDBConnectionAndSetup.MongoDataCollection.Find(filter).SingleOrDefault();

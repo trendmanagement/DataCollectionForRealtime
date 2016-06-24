@@ -42,10 +42,10 @@ namespace DataCollectionForRealtime
         private ConcurrentDictionary<string, OptionSpreadExpression> optionSpreadExpressionHashTable_keyFullName
             = new ConcurrentDictionary<string, OptionSpreadExpression>();
 
-        internal ConcurrentDictionary<long, tblinstrument> instrumentHashTable
-            = new ConcurrentDictionary<long, tblinstrument>();
+        internal ConcurrentDictionary<long, Instrument> instrumentHashTable
+            = new ConcurrentDictionary<long, Instrument>();
 
-        internal List<tblinstrument> instrumentList = new List<tblinstrument>();
+        internal List<Instrument> instrumentList = new List<Instrument>();
 
 
         internal void connectCQG()
@@ -349,7 +349,7 @@ namespace DataCollectionForRealtime
                         OptionSpreadExpression optionSpreadExpression
                             = optionSpreadExpressionHashTable_keyCQGInId[cqg_TimedBarsIn.Id];
 
-                        tblinstrument instrument = null;
+                        Instrument instrument = null;
 
                         if (instrumentHashTable.ContainsKey(optionSpreadExpression.idInstrument))
                         {
@@ -1358,9 +1358,9 @@ namespace DataCollectionForRealtime
                         {
 
                             double optionTickSize = DataManagementUtility.chooseOptionTickSize(defaultPrice,
-                                optionSpreadExpression.instrument.optionTickSize,
-                                optionSpreadExpression.instrument.secondaryOptionTickSize,
-                                optionSpreadExpression.instrument.secondaryOptionTickSizeRule);
+                                optionSpreadExpression.instrument.optionticksize,
+                                optionSpreadExpression.instrument.secondaryoptionticksize,
+                                optionSpreadExpression.instrument.secondaryoptionticksizerule);
 
                             defaultPrice = ((int)((defaultPrice + optionTickSize / 2) /
                                 optionTickSize)) * optionTickSize;
@@ -1382,7 +1382,7 @@ namespace DataCollectionForRealtime
                     {
                         if (optionSpreadExpression.instrument != null)
                         {
-                            defaultPrice = optionSpreadExpression.instrument.optionTickSize;  //OptionConstants.OPTION_ZERO_PRICE;
+                            defaultPrice = optionSpreadExpression.instrument.optionticksize;  //OptionConstants.OPTION_ZERO_PRICE;
                         }
                     }
 
@@ -1548,9 +1548,9 @@ namespace DataCollectionForRealtime
 
                 double optionTickSize = DataManagementUtility.chooseOptionTickSize(
                             optionSpreadExpression.decisionPrice,
-                            optionSpreadExpression.instrument.optionTickSize,
-                            optionSpreadExpression.instrument.secondaryOptionTickSize,
-                            optionSpreadExpression.instrument.secondaryOptionTickSizeRule);
+                            optionSpreadExpression.instrument.optionticksize,
+                            optionSpreadExpression.instrument.secondaryoptionticksize,
+                            optionSpreadExpression.instrument.secondaryoptionticksizerule);
 
                 optionSpreadExpression.decisionPrice =
                     ((int)((optionSpreadExpression.decisionPrice + optionTickSize / 2) /
@@ -1621,9 +1621,9 @@ namespace DataCollectionForRealtime
 
                 optionTickSize = DataManagementUtility.chooseOptionTickSize(
                             optionSpreadExpression.transactionPrice,
-                            optionSpreadExpression.instrument.optionTickSize,
-                            optionSpreadExpression.instrument.secondaryOptionTickSize,
-                            optionSpreadExpression.instrument.secondaryOptionTickSizeRule);
+                            optionSpreadExpression.instrument.optionticksize,
+                            optionSpreadExpression.instrument.secondaryoptionticksize,
+                            optionSpreadExpression.instrument.secondaryoptionticksizerule);
 
                 optionSpreadExpression.transactionPrice =
                     ((int)((optionSpreadExpression.transactionPrice + optionTickSize / 2) /
@@ -1708,9 +1708,9 @@ namespace DataCollectionForRealtime
 
                         double optionTickSize = DataManagementUtility.chooseOptionTickSize(
                             bar.price,
-                            optionSpreadExpression.instrument.optionTickSize,
-                            optionSpreadExpression.instrument.secondaryOptionTickSize,
-                            optionSpreadExpression.instrument.secondaryOptionTickSizeRule);
+                            optionSpreadExpression.instrument.optionticksize,
+                            optionSpreadExpression.instrument.secondaryoptionticksize,
+                            optionSpreadExpression.instrument.secondaryoptionticksizerule);
 
                         bar.price =
                             ((int)((bar.price + optionTickSize / 2) /
@@ -1752,9 +1752,9 @@ namespace DataCollectionForRealtime
 
                         double optionTickSize = DataManagementUtility.chooseOptionTickSize(
                             optionSpreadExpression.theoreticalOptionPrice,
-                            optionSpreadExpression.instrument.optionTickSize,
-                            optionSpreadExpression.instrument.secondaryOptionTickSize,
-                            optionSpreadExpression.instrument.secondaryOptionTickSizeRule);
+                            optionSpreadExpression.instrument.optionticksize,
+                            optionSpreadExpression.instrument.secondaryoptionticksize,
+                            optionSpreadExpression.instrument.secondaryoptionticksizerule);
 
                         optionSpreadExpression.theoreticalOptionPrice =
                             ((int)((optionSpreadExpression.theoreticalOptionPrice + optionTickSize / 2) /
@@ -1762,7 +1762,7 @@ namespace DataCollectionForRealtime
 
                         if (optionSpreadExpression.theoreticalOptionPrice == 0)
                         {
-                            optionSpreadExpression.theoreticalOptionPrice = optionSpreadExpression.instrument.optionTickSize; // OptionConstants.OPTION_ZERO_PRICE;
+                            optionSpreadExpression.theoreticalOptionPrice = optionSpreadExpression.instrument.optionticksize; // OptionConstants.OPTION_ZERO_PRICE;
                         }
 
                         if (realtimePriceFillType
@@ -1789,9 +1789,9 @@ namespace DataCollectionForRealtime
                                 &&
                                 Math.Abs((optionSpreadExpression.bid - optionSpreadExpression.ask)
                             / DataManagementUtility.chooseOptionTickSize(optionSpreadExpression.ask,
-                                optionSpreadExpression.instrument.optionTickSize,
-                                optionSpreadExpression.instrument.secondaryOptionTickSize,
-                                optionSpreadExpression.instrument.secondaryOptionTickSizeRule))
+                                optionSpreadExpression.instrument.optionticksize,
+                                optionSpreadExpression.instrument.secondaryoptionticksize,
+                                optionSpreadExpression.instrument.secondaryoptionticksizerule))
                             < DataCollectionConstants.OPTION_ACCEPTABLE_BID_ASK_SPREAD)
                             {
                                 midPriceAcceptable = true;
@@ -1815,7 +1815,7 @@ namespace DataCollectionForRealtime
                                 {
                                     if (futureExpression.defaultPrice >
                                         optionSpreadExpression.strikePrice + (DataCollectionConstants.STRIKE_COUNT_FOR_DEFAULT_TO_THEORETICAL
-                                            * optionSpreadExpression.instrument.optionStrikeIncrement))
+                                            * optionSpreadExpression.instrument.optionstrikeincrement))
                                     {
                                         optionSpreadExpression.defaultPrice = optionSpreadExpression.theoreticalOptionPrice;
                                         filledDefaultPrice = true;
@@ -1825,7 +1825,7 @@ namespace DataCollectionForRealtime
                                 {
                                     if (futureExpression.defaultPrice <
                                         optionSpreadExpression.strikePrice - (DataCollectionConstants.STRIKE_COUNT_FOR_DEFAULT_TO_THEORETICAL
-                                            * optionSpreadExpression.instrument.optionStrikeIncrement))
+                                            * optionSpreadExpression.instrument.optionstrikeincrement))
                                     {
                                         optionSpreadExpression.defaultPrice = optionSpreadExpression.theoreticalOptionPrice;
                                         filledDefaultPrice = true;
@@ -2064,11 +2064,11 @@ namespace DataCollectionForRealtime
 
                     //if (!optionSpreadManager.realtimeMonitorSettings.eodAnalysis)
 
-                    double optionTickSize = optionSpreadExpression.instrument.optionTickSize;
+                    double optionTickSize = optionSpreadExpression.instrument.optionticksize;
 
-                    if (optionSpreadExpression.instrument.secondaryOptionTickSize > 0)
+                    if (optionSpreadExpression.instrument.secondaryoptionticksize > 0)
                     {
-                        optionTickSize = optionSpreadExpression.instrument.secondaryOptionTickSize;
+                        optionTickSize = optionSpreadExpression.instrument.secondaryoptionticksize;
                     }
 
                     optionSpreadExpression.impliedVol =
@@ -2163,11 +2163,11 @@ namespace DataCollectionForRealtime
                 if (optionSpreadExpression.settlementFilled)
                 {
 
-                    double optionTickSize = optionSpreadExpression.instrument.optionTickSize;
+                    double optionTickSize = optionSpreadExpression.instrument.optionticksize;
 
-                    if (optionSpreadExpression.instrument.secondaryOptionTickSize > 0)
+                    if (optionSpreadExpression.instrument.secondaryoptionticksize > 0)
                     {
-                        optionTickSize = optionSpreadExpression.instrument.secondaryOptionTickSize;
+                        optionTickSize = optionSpreadExpression.instrument.secondaryoptionticksize;
                     }
 
                     optionSpreadExpression.settlementImpliedVol =
