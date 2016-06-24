@@ -11,3 +11,6 @@ The Mongodb in this original build will be run locally.
 https://www.mongodb.com/
 Download the community version to run locally and you can install as a service.
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#configure-a-windows-service-for-mongodb-community-edition
+
+To compile you will need the CQGIC installed
+ftp://ftp.cqg.com/CQGIC/
