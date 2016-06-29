@@ -5,7 +5,7 @@ Our current data provider is CQG.com
 http://www.cqg.com/products/cqg-apis/client-apis
 
 The following link has sample code for using the CQG api.
-ftp://ftp.cqg.com/Samples%20&%20Applications%20For%20API%20Subscribers/Samples/C%23/
+http://partners.cqg.com/api-resources/cqg-data-and-trading-apis
 
 The Mongodb in this original build will be run locally.
 https://www.mongodb.com/
