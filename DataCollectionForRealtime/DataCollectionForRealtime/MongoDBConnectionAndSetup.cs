@@ -25,9 +25,9 @@ namespace DataCollectionForRealtime
             mongoDataCollection = System.Configuration.ConfigurationManager.AppSettings["MongoCollection"];
         }
 
-        public IMongoCollection<OptionSpreadExpression> MongoDataCollection
+        public IMongoCollection<Mongo_OptionSpreadExpression> MongoDataCollection
         {
-            get { return _database.GetCollection<OptionSpreadExpression>(mongoDataCollection); }
+            get { return _database.GetCollection<Mongo_OptionSpreadExpression>(mongoDataCollection); }
         }
 
         internal async Task dropCollection()
@@ -37,7 +37,7 @@ namespace DataCollectionForRealtime
 
         internal async Task createDoc()
         {
-            OptionSpreadExpression osefdb = new OptionSpreadExpression();
+            Mongo_OptionSpreadExpression osefdb = new Mongo_OptionSpreadExpression();
 
             osefdb.cqgSymbol = "test";
 

@@ -36,14 +36,13 @@ namespace DataCollectionForRealtime
         public bool eodAnalysisAtInstrument;
     }
 
-    public class OptionSpreadExpression
+    public class Mongo_OptionSpreadExpression
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId Id { get; set; }
 
 
-        public CQG.CQGInstrument cqgInstrument;
-        public CQG.CQGTimedBars futureTimedBars;
+        
 
         //[BsonElement("cqgSymbol")]
         public string cqgSymbol { get; set; }
@@ -183,6 +182,12 @@ namespace DataCollectionForRealtime
 
         public List<OptionSpreadExpression> optionExpressionsThatUseThisFutureAsUnderlying = new List<OptionSpreadExpression>();
         //if this expression is a future contract this needs to be filled with the options that have this future as an underlying
+    }
+
+    public class OptionSpreadExpression : Mongo_OptionSpreadExpression
+    {
+        public CQG.CQGInstrument cqgInstrument;
+        public CQG.CQGTimedBars futureTimedBars;
     }
 
     //public class OptionSpreadExpression
