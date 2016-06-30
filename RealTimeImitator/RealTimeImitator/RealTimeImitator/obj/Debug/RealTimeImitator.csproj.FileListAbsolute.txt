@@ -1,0 +1,9 @@
+D:\Repos\Trend menegment\DataCollectionForRealtime\RealTimeImitator\RealTimeImitator\RealTimeImitator\bin\Debug\RealTimeImitator.exe.config
+D:\Repos\Trend menegment\DataCollectionForRealtime\RealTimeImitator\RealTimeImitator\RealTimeImitator\bin\Debug\RealTimeImitator.exe
+D:\Repos\Trend menegment\DataCollectionForRealtime\RealTimeImitator\RealTimeImitator\RealTimeImitator\bin\Debug\RealTimeImitator.pdb
+D:\Repos\Trend menegment\DataCollectionForRealtime\RealTimeImitator\RealTimeImitator\RealTimeImitator\obj\Debug\RealTimeImitator.csprojResolveAssemblyReference.cache
+D:\Repos\Trend menegment\DataCollectionForRealtime\RealTimeImitator\RealTimeImitator\RealTimeImitator\obj\Debug\RealTimeImitator.MainForm.resources
+D:\Repos\Trend menegment\DataCollectionForRealtime\RealTimeImitator\RealTimeImitator\RealTimeImitator\obj\Debug\RealTimeImitator.Properties.Resources.resources
+D:\Repos\Trend menegment\DataCollectionForRealtime\RealTimeImitator\RealTimeImitator\RealTimeImitator\obj\Debug\RealTimeImitator.csproj.GenerateResource.Cache
+D:\Repos\Trend menegment\DataCollectionForRealtime\RealTimeImitator\RealTimeImitator\RealTimeImitator\obj\Debug\RealTimeImitator.exe
+D:\Repos\Trend menegment\DataCollectionForRealtime\RealTimeImitator\RealTimeImitator\RealTimeImitator\obj\Debug\RealTimeImitator.pdb
