@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RealtimeDataManagement));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStripOptionMonitor = new System.Windows.Forms.StatusStrip();
             this.statusOfUpdatedInstruments = new System.Windows.Forms.ToolStripStatusLabel();
             this.connectionStatus = new System.Windows.Forms.ToolStripStatusLabel();
@@ -40,6 +40,12 @@
             this.tabPageExpressionsList = new System.Windows.Forms.TabPage();
             this.dataGridViewExpressionList = new System.Windows.Forms.DataGridView();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioBtnBidPriceRules = new System.Windows.Forms.RadioButton();
+            this.radioBtnAskPriceRules = new System.Windows.Forms.RadioButton();
+            this.radioBtnTheorPriceRules = new System.Windows.Forms.RadioButton();
+            this.radioBtnMidPriceRules = new System.Windows.Forms.RadioButton();
+            this.radioBtnDefaultPriceRules = new System.Windows.Forms.RadioButton();
             this.btnCallAllInstruments = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCallUnsubscribed = new System.Windows.Forms.ToolStripButton();
@@ -50,22 +56,20 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripSeparator();
             this.mainRealtimeMenuStrip = new System.Windows.Forms.MenuStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.radioBtnDefaultPriceRules = new System.Windows.Forms.RadioButton();
-            this.radioBtnMidPriceRules = new System.Windows.Forms.RadioButton();
-            this.radioBtnTheorPriceRules = new System.Windows.Forms.RadioButton();
-            this.radioBtnAskPriceRules = new System.Windows.Forms.RadioButton();
-            this.radioBtnBidPriceRules = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tabLog = new System.Windows.Forms.TabPage();
+            this.richTextBoxLog = new System.Windows.Forms.RichTextBox();
+            this.toolStripMenuItemListern = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripOptionMonitor.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageExpressionsList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressionList)).BeginInit();
             this.tabPageSettings.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.mainRealtimeMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.tabLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStripOptionMonitor
@@ -119,6 +123,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPageExpressionsList);
             this.tabControl1.Controls.Add(this.tabPageSettings);
+            this.tabControl1.Controls.Add(this.tabLog);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -142,23 +147,23 @@
             this.dataGridViewExpressionList.AllowUserToAddRows = false;
             this.dataGridViewExpressionList.AllowUserToDeleteRows = false;
             this.dataGridViewExpressionList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewExpressionList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewExpressionList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressionList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewExpressionList.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewExpressionList.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressionList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewExpressionList.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewExpressionList.Name = "dataGridViewExpressionList";
@@ -176,6 +181,82 @@
             this.tabPageSettings.TabIndex = 1;
             this.tabPageSettings.Text = "Settings";
             this.tabPageSettings.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioBtnBidPriceRules);
+            this.groupBox1.Controls.Add(this.radioBtnAskPriceRules);
+            this.groupBox1.Controls.Add(this.radioBtnTheorPriceRules);
+            this.groupBox1.Controls.Add(this.radioBtnMidPriceRules);
+            this.groupBox1.Controls.Add(this.radioBtnDefaultPriceRules);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(127, 132);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Pricing Algorithm";
+            // 
+            // radioBtnBidPriceRules
+            // 
+            this.radioBtnBidPriceRules.AutoSize = true;
+            this.radioBtnBidPriceRules.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioBtnBidPriceRules.Location = new System.Drawing.Point(6, 84);
+            this.radioBtnBidPriceRules.Name = "radioBtnBidPriceRules";
+            this.radioBtnBidPriceRules.Size = new System.Drawing.Size(39, 17);
+            this.radioBtnBidPriceRules.TabIndex = 7;
+            this.radioBtnBidPriceRules.Text = "Bid";
+            this.radioBtnBidPriceRules.UseVisualStyleBackColor = true;
+            this.radioBtnBidPriceRules.CheckedChanged += new System.EventHandler(this.radioBtnDefaultPriceRules_CheckedChanged);
+            // 
+            // radioBtnAskPriceRules
+            // 
+            this.radioBtnAskPriceRules.AutoSize = true;
+            this.radioBtnAskPriceRules.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioBtnAskPriceRules.Location = new System.Drawing.Point(6, 38);
+            this.radioBtnAskPriceRules.Name = "radioBtnAskPriceRules";
+            this.radioBtnAskPriceRules.Size = new System.Drawing.Size(42, 17);
+            this.radioBtnAskPriceRules.TabIndex = 6;
+            this.radioBtnAskPriceRules.Text = "Ask";
+            this.radioBtnAskPriceRules.UseVisualStyleBackColor = true;
+            this.radioBtnAskPriceRules.CheckedChanged += new System.EventHandler(this.radioBtnDefaultPriceRules_CheckedChanged);
+            // 
+            // radioBtnTheorPriceRules
+            // 
+            this.radioBtnTheorPriceRules.AutoSize = true;
+            this.radioBtnTheorPriceRules.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioBtnTheorPriceRules.Location = new System.Drawing.Point(6, 107);
+            this.radioBtnTheorPriceRules.Name = "radioBtnTheorPriceRules";
+            this.radioBtnTheorPriceRules.Size = new System.Drawing.Size(78, 17);
+            this.radioBtnTheorPriceRules.TabIndex = 5;
+            this.radioBtnTheorPriceRules.Text = "Theoretical";
+            this.radioBtnTheorPriceRules.UseVisualStyleBackColor = true;
+            this.radioBtnTheorPriceRules.CheckedChanged += new System.EventHandler(this.radioBtnDefaultPriceRules_CheckedChanged);
+            // 
+            // radioBtnMidPriceRules
+            // 
+            this.radioBtnMidPriceRules.AutoSize = true;
+            this.radioBtnMidPriceRules.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioBtnMidPriceRules.Location = new System.Drawing.Point(6, 61);
+            this.radioBtnMidPriceRules.Name = "radioBtnMidPriceRules";
+            this.radioBtnMidPriceRules.Size = new System.Drawing.Size(80, 17);
+            this.radioBtnMidPriceRules.TabIndex = 4;
+            this.radioBtnMidPriceRules.Text = "Mid/Bid/Ask";
+            this.radioBtnMidPriceRules.UseVisualStyleBackColor = true;
+            this.radioBtnMidPriceRules.CheckedChanged += new System.EventHandler(this.radioBtnDefaultPriceRules_CheckedChanged);
+            // 
+            // radioBtnDefaultPriceRules
+            // 
+            this.radioBtnDefaultPriceRules.AutoSize = true;
+            this.radioBtnDefaultPriceRules.Checked = true;
+            this.radioBtnDefaultPriceRules.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioBtnDefaultPriceRules.Location = new System.Drawing.Point(6, 15);
+            this.radioBtnDefaultPriceRules.Name = "radioBtnDefaultPriceRules";
+            this.radioBtnDefaultPriceRules.Size = new System.Drawing.Size(60, 17);
+            this.radioBtnDefaultPriceRules.TabIndex = 3;
+            this.radioBtnDefaultPriceRules.TabStop = true;
+            this.radioBtnDefaultPriceRules.Text = "Default";
+            this.radioBtnDefaultPriceRules.UseVisualStyleBackColor = true;
+            this.radioBtnDefaultPriceRules.CheckedChanged += new System.EventHandler(this.radioBtnDefaultPriceRules_CheckedChanged);
             // 
             // btnCallAllInstruments
             // 
@@ -254,7 +335,8 @@
             this.btnResetAllInstruments,
             this.toolStripSeparator19,
             this.btnCQGRecon,
-            this.toolStripButton3});
+            this.toolStripButton3,
+            this.toolStripMenuItemListern});
             this.mainRealtimeMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainRealtimeMenuStrip.Name = "mainRealtimeMenuStrip";
             this.mainRealtimeMenuStrip.Size = new System.Drawing.Size(795, 27);
@@ -273,81 +355,32 @@
             this.splitContainer1.SplitterDistance = 208;
             this.splitContainer1.TabIndex = 10;
             // 
-            // radioBtnDefaultPriceRules
+            // tabLog
             // 
-            this.radioBtnDefaultPriceRules.AutoSize = true;
-            this.radioBtnDefaultPriceRules.Checked = true;
-            this.radioBtnDefaultPriceRules.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBtnDefaultPriceRules.Location = new System.Drawing.Point(6, 15);
-            this.radioBtnDefaultPriceRules.Name = "radioBtnDefaultPriceRules";
-            this.radioBtnDefaultPriceRules.Size = new System.Drawing.Size(60, 17);
-            this.radioBtnDefaultPriceRules.TabIndex = 3;
-            this.radioBtnDefaultPriceRules.TabStop = true;
-            this.radioBtnDefaultPriceRules.Text = "Default";
-            this.radioBtnDefaultPriceRules.UseVisualStyleBackColor = true;
-            this.radioBtnDefaultPriceRules.CheckedChanged += new System.EventHandler(this.radioBtnDefaultPriceRules_CheckedChanged);
+            this.tabLog.Controls.Add(this.richTextBoxLog);
+            this.tabLog.Location = new System.Drawing.Point(4, 22);
+            this.tabLog.Name = "tabLog";
+            this.tabLog.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLog.Size = new System.Drawing.Size(551, 278);
+            this.tabLog.TabIndex = 2;
+            this.tabLog.Text = "Log";
+            this.tabLog.UseVisualStyleBackColor = true;
             // 
-            // radioBtnMidPriceRules
+            // richTextBoxLog
             // 
-            this.radioBtnMidPriceRules.AutoSize = true;
-            this.radioBtnMidPriceRules.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBtnMidPriceRules.Location = new System.Drawing.Point(6, 61);
-            this.radioBtnMidPriceRules.Name = "radioBtnMidPriceRules";
-            this.radioBtnMidPriceRules.Size = new System.Drawing.Size(80, 17);
-            this.radioBtnMidPriceRules.TabIndex = 4;
-            this.radioBtnMidPriceRules.Text = "Mid/Bid/Ask";
-            this.radioBtnMidPriceRules.UseVisualStyleBackColor = true;
-            this.radioBtnMidPriceRules.CheckedChanged += new System.EventHandler(this.radioBtnDefaultPriceRules_CheckedChanged);
+            this.richTextBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxLog.Location = new System.Drawing.Point(3, 3);
+            this.richTextBoxLog.Name = "richTextBoxLog";
+            this.richTextBoxLog.Size = new System.Drawing.Size(545, 272);
+            this.richTextBoxLog.TabIndex = 0;
+            this.richTextBoxLog.Text = "";
             // 
-            // radioBtnTheorPriceRules
+            // toolStripMenuItemListern
             // 
-            this.radioBtnTheorPriceRules.AutoSize = true;
-            this.radioBtnTheorPriceRules.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBtnTheorPriceRules.Location = new System.Drawing.Point(6, 107);
-            this.radioBtnTheorPriceRules.Name = "radioBtnTheorPriceRules";
-            this.radioBtnTheorPriceRules.Size = new System.Drawing.Size(78, 17);
-            this.radioBtnTheorPriceRules.TabIndex = 5;
-            this.radioBtnTheorPriceRules.Text = "Theoretical";
-            this.radioBtnTheorPriceRules.UseVisualStyleBackColor = true;
-            this.radioBtnTheorPriceRules.CheckedChanged += new System.EventHandler(this.radioBtnDefaultPriceRules_CheckedChanged);
-            // 
-            // radioBtnAskPriceRules
-            // 
-            this.radioBtnAskPriceRules.AutoSize = true;
-            this.radioBtnAskPriceRules.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBtnAskPriceRules.Location = new System.Drawing.Point(6, 38);
-            this.radioBtnAskPriceRules.Name = "radioBtnAskPriceRules";
-            this.radioBtnAskPriceRules.Size = new System.Drawing.Size(42, 17);
-            this.radioBtnAskPriceRules.TabIndex = 6;
-            this.radioBtnAskPriceRules.Text = "Ask";
-            this.radioBtnAskPriceRules.UseVisualStyleBackColor = true;
-            this.radioBtnAskPriceRules.CheckedChanged += new System.EventHandler(this.radioBtnDefaultPriceRules_CheckedChanged);
-            // 
-            // radioBtnBidPriceRules
-            // 
-            this.radioBtnBidPriceRules.AutoSize = true;
-            this.radioBtnBidPriceRules.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioBtnBidPriceRules.Location = new System.Drawing.Point(6, 84);
-            this.radioBtnBidPriceRules.Name = "radioBtnBidPriceRules";
-            this.radioBtnBidPriceRules.Size = new System.Drawing.Size(39, 17);
-            this.radioBtnBidPriceRules.TabIndex = 7;
-            this.radioBtnBidPriceRules.Text = "Bid";
-            this.radioBtnBidPriceRules.UseVisualStyleBackColor = true;
-            this.radioBtnBidPriceRules.CheckedChanged += new System.EventHandler(this.radioBtnDefaultPriceRules_CheckedChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.radioBtnBidPriceRules);
-            this.groupBox1.Controls.Add(this.radioBtnAskPriceRules);
-            this.groupBox1.Controls.Add(this.radioBtnTheorPriceRules);
-            this.groupBox1.Controls.Add(this.radioBtnMidPriceRules);
-            this.groupBox1.Controls.Add(this.radioBtnDefaultPriceRules);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(127, 132);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Pricing Algorithm";
+            this.toolStripMenuItemListern.Name = "toolStripMenuItemListern";
+            this.toolStripMenuItemListern.Size = new System.Drawing.Size(95, 23);
+            this.toolStripMenuItemListern.Text = "StartListerning";
+            this.toolStripMenuItemListern.Click += new System.EventHandler(this.toolStripMenuItemListern_Click);
             // 
             // RealtimeDataManagement
             // 
@@ -365,13 +398,14 @@
             this.tabPageExpressionsList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpressionList)).EndInit();
             this.tabPageSettings.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.mainRealtimeMenuStrip.ResumeLayout(false);
             this.mainRealtimeMenuStrip.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.tabLog.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,6 +438,9 @@
         private System.Windows.Forms.RadioButton radioBtnTheorPriceRules;
         private System.Windows.Forms.RadioButton radioBtnMidPriceRules;
         private System.Windows.Forms.RadioButton radioBtnDefaultPriceRules;
+        private System.Windows.Forms.TabPage tabLog;
+        private System.Windows.Forms.RichTextBox richTextBoxLog;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemListern;
     }
 }
 

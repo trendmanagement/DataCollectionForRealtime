@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MongoDB.Bson;
-using MongoDB.Driver; 
+using MongoDB.Driver;
+using System.Net;
+using System.Net.Sockets;
 
 namespace DataCollectionForRealtime
 {
@@ -38,9 +40,11 @@ namespace DataCollectionForRealtime
 
             Console.WriteLine(cqgDataManagement.instrumentList[0].description);
 
-            testLoadIn();
+            AsyncTaskListener.Updated += AsyncTaskListener_Updated;
 
-            testGetData();
+            //testLoadIn();
+
+            //testGetData();
 
             //mongoDBConnectionAndSetup.createDoc();
             //mongoDBConnectionAndSetup.getDocument();
@@ -186,6 +190,90 @@ namespace DataCollectionForRealtime
             optionPriceFillTypeChanged();
         }
         
-        
+        void StartListerning()
+        {
+            int port = 8005;
+            string address = "127.0.0.1";
+
+            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
+
+            Socket listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            try
+            {
+                listenSocket.Bind(ipPoint);
+
+                listenSocket.Listen(10);
+
+                AsyncTaskListener.LogMessage("Start listerning");
+
+                while (true)
+                {
+                    Socket handler = listenSocket.Accept();
+                    StringBuilder builder = new StringBuilder();
+                    int bytes = 0;
+                    byte[] data = new byte[256];
+
+                    do
+                    {
+                        bytes = handler.Receive(data);
+                        builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                    }
+                    while (handler.Available > 0);
+
+                    AsyncTaskListener.LogMessage(DateTime.Now.ToShortTimeString() + ": " + builder.ToString());
+
+                    string message = "Your query is successfully added";
+                    data = Encoding.Unicode.GetBytes(message);
+                    handler.Send(data);
+
+                    handler.Shutdown(SocketShutdown.Both);
+                    handler.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+               AsyncTaskListener.LogMessage("Error: " + ex.Message);
+            }
+        }
+
+        private async void toolStripMenuItemListern_Click(object sender, EventArgs e)
+        {
+            await Task.Run( () => StartListerning());
+        }
+
+        private void AsyncTaskListener_Updated(
+    string message = null,
+    int progress = -1,
+    double rps = double.NaN)
+        {
+            Action action = new Action(
+                () =>
+                {
+                    if (!string.IsNullOrWhiteSpace(message))
+                    {
+                        richTextBoxLog.Text += message + "\n";
+                        richTextBoxLog.Select(richTextBoxLog.Text.Length, richTextBoxLog.Text.Length);
+                        richTextBoxLog.ScrollToCaret();
+                    }
+                    //if (progress != -1)
+                    //{
+                    //    progressBar.Value = progress;
+                    //}
+                    //if (!double.IsNaN(rps))
+                    //{
+                    //    labelRPS2.Text = Math.Round(rps).ToString();
+                    //}
+                });
+
+            try
+            {
+                Invoke(action);
+            }
+            catch (ObjectDisposedException)
+            {
+                // User closed the form
+            }
+        }
+
     }
 }
