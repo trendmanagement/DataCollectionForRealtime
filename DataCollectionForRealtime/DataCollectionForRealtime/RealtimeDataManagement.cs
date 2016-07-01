@@ -42,9 +42,9 @@ namespace DataCollectionForRealtime
 
             AsyncTaskListener.Updated += AsyncTaskListener_Updated;
 
-            //testLoadIn();
+            testLoadIn();
 
-            //testGetData();
+            testGetData();
 
             //mongoDBConnectionAndSetup.createDoc();
             //mongoDBConnectionAndSetup.getDocument();
@@ -190,57 +190,6 @@ namespace DataCollectionForRealtime
             optionPriceFillTypeChanged();
         }
         
-        void StartListerning()
-        {
-            int port = 8005;
-            string address = "127.0.0.1";
-
-            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
-
-            Socket listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            try
-            {
-                listenSocket.Bind(ipPoint);
-
-                listenSocket.Listen(10);
-
-                AsyncTaskListener.LogMessage("Start listerning");
-
-                while (true)
-                {
-                    Socket handler = listenSocket.Accept();
-                    StringBuilder builder = new StringBuilder();
-                    int bytes = 0;
-                    byte[] data = new byte[256];
-
-                    do
-                    {
-                        bytes = handler.Receive(data);
-                        builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-                    }
-                    while (handler.Available > 0);
-
-                    AsyncTaskListener.LogMessage(DateTime.Now.ToShortTimeString() + ": " + builder.ToString());
-
-                    string message = "Your query is successfully added";
-                    data = Encoding.Unicode.GetBytes(message);
-                    handler.Send(data);
-
-                    handler.Shutdown(SocketShutdown.Both);
-                    handler.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-               AsyncTaskListener.LogMessage("Error: " + ex.Message);
-            }
-        }
-
-        private async void toolStripMenuItemListern_Click(object sender, EventArgs e)
-        {
-            await Task.Run( () => StartListerning());
-        }
-
         private void AsyncTaskListener_Updated(
     string message = null,
     int progress = -1,

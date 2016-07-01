@@ -355,33 +355,6 @@
             this.splitContainer1.SplitterDistance = 208;
             this.splitContainer1.TabIndex = 10;
             // 
-            // tabLog
-            // 
-            this.tabLog.Controls.Add(this.richTextBoxLog);
-            this.tabLog.Location = new System.Drawing.Point(4, 22);
-            this.tabLog.Name = "tabLog";
-            this.tabLog.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLog.Size = new System.Drawing.Size(551, 278);
-            this.tabLog.TabIndex = 2;
-            this.tabLog.Text = "Log";
-            this.tabLog.UseVisualStyleBackColor = true;
-            // 
-            // richTextBoxLog
-            // 
-            this.richTextBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxLog.Location = new System.Drawing.Point(3, 3);
-            this.richTextBoxLog.Name = "richTextBoxLog";
-            this.richTextBoxLog.Size = new System.Drawing.Size(545, 272);
-            this.richTextBoxLog.TabIndex = 0;
-            this.richTextBoxLog.Text = "";
-            // 
-            // toolStripMenuItemListern
-            // 
-            this.toolStripMenuItemListern.Name = "toolStripMenuItemListern";
-            this.toolStripMenuItemListern.Size = new System.Drawing.Size(95, 23);
-            this.toolStripMenuItemListern.Text = "StartListerning";
-            this.toolStripMenuItemListern.Click += new System.EventHandler(this.toolStripMenuItemListern_Click);
-            // 
             // RealtimeDataManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
